@@ -15,6 +15,7 @@ The shipped `CastOneSpell` compares current magicka with a cumulative cost even
 when the cost is zero, then flashes the global player HUD without a player-only
 guard. This behavior is confirmed in the installed binary at RVA `0x836F3` and
 `0x836FB`, not merely inferred from a different upstream version.
+
 ## STB resource HUD fix (3.2.5)
 
 Free/refunding events no longer fail when an actor value is negative. NPC
@@ -33,6 +34,11 @@ ctest --preset release
 The CommonLibSSE-NG submodule and vcpkg baseline are pinned. Builds do not
 automatically overwrite the game DLL. For explicit installation, configure
 `DAC_DEPLOY_DIR` to the mod directory and build the `deploy` target.
+
+The deploy target also installs the eight unchanged STB mechanic configs from
+`contrib/Distribution/STB`. It does not remove old copies from another mod.
+`ResourceCostTest` covers free casts at negative/zero values, exact affordability,
+refunds, and the distinction between player and NPC shortages (8 passing cases).
 
 
 ## Table of Contents

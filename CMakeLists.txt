@@ -21,7 +21,9 @@ add_commonlibsse_plugin(${PROJECT_NAME}
             src/ResourceCost.h "${CMAKE_CURRENT_BINARY_DIR}/version.rc")
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME loki_DynamicAnimationCasting)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
-target_link_libraries(${PROJECT_NAME} PRIVATE tomlplusplus::tomlplusplus)
+# The vcpkg binary uses exceptions; compile our no-exception parser header-only.
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE
+    "$<TARGET_PROPERTY:tomlplusplus::tomlplusplus,INTERFACE_INCLUDE_DIRECTORIES>")
 target_precompile_headers(${PROJECT_NAME} PRIVATE src/PCH.h)
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /utf-8 /permissive- /Zc:preprocessor /Zi)
@@ -44,5 +46,7 @@ if(DAC_DEPLOY_DIR)
             "${DAC_DEPLOY_DIR}/SKSE/Plugins/loki_DynamicAnimationCasting.dll"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_PDB_FILE:${PROJECT_NAME}>"
             "${DAC_DEPLOY_DIR}/SKSE/Plugins/loki_DynamicAnimationCasting.pdb"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${CMAKE_CURRENT_SOURCE_DIR}/contrib/Distribution/STB" "${DAC_DEPLOY_DIR}"
         DEPENDS ${PROJECT_NAME} VERBATIM)
 endif()

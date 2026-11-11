@@ -1,0 +1,104 @@
+[[event]]
+AnimationEvent = "AttackPowerRight_FXstart"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x1AEA4
+IsEquippedLeftFormID = -1
+HasWeaponType = -1
+WeaponEspName = "Dragonborn.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x1AEAE]
+SpellEspName = "Dragonborn.esm"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "AttackPowerLeft_FXstart"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x1AEA4
+IsEquippedLeftFormID = -1
+HasWeaponType = -1
+WeaponEspName = "Dragonborn.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x1AEAE]
+SpellEspName = "Dragonborn.esm"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "AttackPowerBackward_FXstart"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x1AEA4
+IsEquippedLeftFormID = -1
+HasWeaponType = -1
+WeaponEspName = "Dragonborn.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x1AEAE]
+SpellEspName = "Dragonborn.esm"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "AttackPowerStanding_FXstart"
+HasRaceFormID = -1
+#RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x1AEA4
+IsEquippedLeftFormID = -1
+HasWeaponType = -1
+WeaponEspName = "Dragonborn.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x33A27]
+SpellEspName = "Dragonborn.esm"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "AttackPowerForward_FXstart"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+#ActorEspName = ""
+IsEquippedRightFormID = 0x1AEA4
+IsEquippedLeftFormID = -1
+HasWeaponType = -1
+WeaponEspName = "Dragonborn.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x33A27]
+SpellEspName = "Dragonborn.esm"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00

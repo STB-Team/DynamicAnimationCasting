@@ -1,0 +1,102 @@
+# Create a new "event" array and fill it with these settings;
+# 1.  AnimationEvent = The animation event you wish to spawn the spells on
+# 2.  RaceFormID     = Optional, will only allow the spells to spawn for this race. Set to 0 or -1 to ignore.
+# 2a. RaceEspName    = the .esp the race belongs to
+# 3.  ActorFormID    = Optional, will only allow the spells to spawn for this actor. Set to 0 or -1 to ignore.
+# 3a. ActorEspName   = the .esp the actor belongs to
+# 4.  WeaponFormID   = Optional, will only allow the spells to spawn while the actor holds this weapon. Set to 0 or -1 to ignore.
+# 4a. WeaponEspName  = the .esp the weapon belongs to
+# 5.  EffectFormID   = Optional, will only allow the spells to spawn while the actor has this active effect. Set to 0 or -1 to ignore.
+# 5a. EffectEspName  = the .esp the effect belongs to
+# 6.  KeywordFormID  = Optional, will only allow the spells to spawn while the actor has this keyword. Set to 0 or -1 to ignore.
+# 6a. KeywordEspName = the .esp the keyword belongs to
+# 7.  SpellFormIDs   = The Form IDs of the spells you want you spawn when meeting the conditions
+# 7a. SpellEspName   = the .esp the spells belong to
+# 8.  TargetPlayer   = whether or not the spell targets the caster
+# 9.  HealthCost     = the health cost for spawning the spells.  (NOTE: Only subtracts once, NOT for each spell)
+# 10. StaminaCost    = the stamina cost for spawning the spells. (NOTE: Only subtracts once, NOT for each spell)
+# 11. MagickaCost    = the magicka cost for spawning the spells. (NOTE: Only subtracts once, NOT for each spell)
+
+[[event]]
+AnimationEvent = "weaponSwing"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x4E4EE
+IsEquippedLeftFormID = -1
+HasWeaponType = -1 # does not care what esp it belongs to
+WeaponEspName = "Skyrim.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x142832]
+SpellEspName = "STB.esp"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "weaponLeftSwing"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = -1
+IsEquippedLeftFormID = 0x4E4EE
+HasWeaponType = -1 # does not care what esp it belongs to
+WeaponEspName = "Skyrim.esm"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x142832]
+SpellEspName = "STB.esp"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "weaponSwing"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x017AFD
+IsEquippedLeftFormID = -1
+HasWeaponType = -1 # does not care what esp it belongs to
+WeaponEspName = "STB.esp"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x142832]
+SpellEspName = "STB.esp"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00
+
+[[event]]
+AnimationEvent = "weaponSwing"
+HasRaceFormID = -1
+RaceEspName = ""
+HasActorFormID = -1
+ActorEspName = ""
+IsEquippedRightFormID = 0x019C1F
+IsEquippedLeftFormID = -1
+HasWeaponType = -1 # does not care what esp it belongs to
+WeaponEspName = "STB.esp"
+HasEffectFormID = -1
+EffectEspName = ""
+HasKeywordFormID = -1
+KeywordEspName = ""
+SpellFormIDs = [0x142832]
+SpellEspName = "STB.esp"
+TargetCaster = false
+HealthCost = 0.00
+StaminaCost = 0.00
+MagickaCost = 0.00

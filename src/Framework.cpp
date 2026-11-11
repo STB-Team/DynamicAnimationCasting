@@ -1,6 +1,7 @@
 #include "PCH.h"
 #include "framework.h"
 #define TOML_EXCEPTIONS 0
+#define TOML_HEADER_ONLY 1
 #include <toml++/toml.h>
 
 void Loki::DynamicAnimationCasting::ReadToml(std::filesystem::path path) {
@@ -124,7 +125,7 @@ void Loki::DynamicAnimationCasting::ReadToml(std::filesystem::path path) {
 
             auto& trigger = CastTriggers.emplace_back();
             trigger.tag = event["AnimationEvent"].value_or(empty_string);
-            logger::info("- Cast Trigger [{}]", trigger.tag);
+            logger::info("- Cast Trigger [{}]", trigger.tag.c_str());
 
             auto exGroupName = event["ExclusiveGroup"].value_or(empty_string);
             if (!exGroupName.empty()) {

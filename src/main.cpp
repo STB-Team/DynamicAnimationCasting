@@ -201,7 +201,8 @@ SKSEPluginLoad(const LoadInterface* skse) {
 
     auto* plugin = PluginDeclaration::GetSingleton();
     auto version = plugin->GetVersion();
-    log::info("{} {} is loading...", plugin->GetName(), version);
+    log::info("{} {}.{}.{}.{} is loading...", plugin->GetName(),
+              version.major(), version.minor(), version.patch(), version.build());
 
     Init(skse);
     InitializeMessaging();

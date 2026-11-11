@@ -1,6 +1,7 @@
 #include "PCH.h"
 #include "DynamicAnimationCasting.h"
 #include "Framework.h"
+#include "ResourceCost.h"
 #include <random>
 
 void Loki::HUD::FlashHUDMeter(RE::ActorValue a_av) {
@@ -142,21 +143,21 @@ bool Loki::AnimationCasting::CastTrigger::Invoke(const RE::Actor* a_caster)
     }
     const RE::Actor::ACTOR_RUNTIME_DATA& actorRD = actor->GetActorRuntimeData();
 
-    if (staminaCost > 0.f && actorAV->GetActorValue(RE::ActorValue::kStamina) < staminaCost) {
-        HUD::FlashHUDMeter(RE::ActorValue::kStamina);
-        return false;
-    }
-
-    if (healthCost > 0.f && actorAV->GetActorValue(RE::ActorValue::kHealth) < healthCost) {
-        HUD::FlashHUDMeter(RE::ActorValue::kHealth);
-        return false;
-    }
-
     float actorMagicka = actorAV->GetActorValue(RE::ActorValue::kMagicka);
-    if (magickaCost > 0.f && actorMagicka < magickaCost) {
-        HUD::FlashHUDMeter(RE::ActorValue::kMagicka);
-        return false;
-    }
+    auto CanAfford = [&](RE::ActorValue resource, float available, float required) {
+        const auto result = CheckResourceCost(available, required, actor->IsPlayerRef());
+        if (result == ResourceCostResult::insufficientPlayer) {
+            HUD::FlashHUDMeter(resource);
+        }
+        return result == ResourceCostResult::affordable;
+    };
+    auto CanPayTriggerCosts = [&] {
+        return (!(staminaCost > 0.f) ||
+                CanAfford(RE::ActorValue::kStamina, actorAV->GetActorValue(RE::ActorValue::kStamina), staminaCost)) &&
+               (!(healthCost > 0.f) ||
+                CanAfford(RE::ActorValue::kHealth, actorAV->GetActorValue(RE::ActorValue::kHealth), healthCost)) &&
+               CanAfford(RE::ActorValue::kMagicka, actorMagicka, magickaCost);
+    };
 
     if (chance < 1.f) {
         static std::mt19937 rng (std::random_device{}());  // Standard mersenne_twister_engine seeded with rd()
@@ -222,8 +223,7 @@ bool Loki::AnimationCasting::CastTrigger::Invoke(const RE::Actor* a_caster)
             if (!IsAllowedSpell(actor, spell)) return false;
 
             float spellCost = spell->CalculateMagickaCost(actor) * this->castMagickaCostFactor;
-            if (actorMagicka < totalMagikaCost + spellCost) {
-                HUD::FlashHUDMeter(RE::ActorValue::kMagicka);
+            if (!CanAfford(RE::ActorValue::kMagicka, actorMagicka, totalMagikaCost + spellCost)) {
                 return false;
             }
             totalMagikaCost += spellCost;
@@ -364,6 +364,9 @@ bool Loki::AnimationCasting::CastTrigger::Invoke(const RE::Actor* a_caster)
                     }
                 }
 
+                if (!casted && !CanPayTriggerCosts()) {
+                    return false;
+                }
                 if (cooldown > 0 && !DynamicAnimationCasting::UpdateTriggerCooldown(cooldown, this, actor)) {
                     return false; // not continue
                 }
@@ -372,6 +375,9 @@ bool Loki::AnimationCasting::CastTrigger::Invoke(const RE::Actor* a_caster)
         }
         return casted;
     } else {
+        if (!CanPayTriggerCosts()) {
+            return false;
+        }
         if (cooldown > 0 && !DynamicAnimationCasting::UpdateTriggerCooldown(cooldown, this, actor)) {
             return false;
         }

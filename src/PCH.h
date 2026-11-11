@@ -1,11 +1,11 @@
 #pragma once
 #define NOMINMAX
 #define TRUEHUD_API_COMMONLIB
-#include <Windows.h>
 
 #include <RE/Skyrim.h>
 #include <SKSE/SKSE.h>
 #include <REL/Relocation.h>
+#include <Windows.h>
 
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/msvc_sink.h>

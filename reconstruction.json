@@ -1,0 +1,52 @@
+{
+  "dll_sha256": "86fbe560e425ae61721194a79874ada5a9f1b5bad31509f4a0e6c8ce07db964a",
+  "pdb_guid": "f32c3083-cfb0-4b85-a0ae-fd8f7e09f9e7",
+  "pdb_age": 3,
+  "files": [
+    {
+      "path": "src/PCH.h",
+      "sha256": "f37840d972d1d0abfffe4d9631a42dbe74b5280e3b4ac22323ad7907dc974915",
+      "matches_pdb": true
+    },
+    {
+      "path": "src/main.cpp",
+      "sha256": "85cf58025c2a35970b3e228df710efb49f3b0a09c82558790dc429a592f208c8",
+      "matches_pdb": true
+    },
+    {
+      "path": "src/DynamicAnimationCasting.h",
+      "sha256": "89a6a548a78088c6be0ecfa5a2d6522eb5cb3c784a5bf7840b8a72b9abb13473",
+      "matches_pdb": true
+    },
+    {
+      "path": "src/Framework.h",
+      "sha256": "bb75086cabad11756b86e409e0fa7fc9f89a2f3eea530a3a49ee72493bd41e81",
+      "matches_pdb": true
+    },
+    {
+      "path": "src/Framework.cpp",
+      "sha256": "66632ccff1d4c6c20839cc337afd169ffa37c617949eea1bc9fdaf80d56f7b5c",
+      "matches_pdb": true
+    },
+    {
+      "path": "src/DynamicAnimationCasting.cpp",
+      "sha256": "73bfd408d0591b8d8603931a086909a58102a3b674b06611a5c6a6ab04004ec6",
+      "matches_pdb": true
+    }
+  ],
+  "unrecoverable_unused_header": {
+    "path": "src/Expression.h",
+    "sha256": "7ec50d1ef112ca48baafa62d991664a0722797673562c8e9ed766ac6a0d632cd"
+  },
+  "upstream_base": "5fb60cbe",
+  "reconstruction": "Exact source text recovered and verified against original PDB SHA256; normalize checkout CRLF to LF.",
+  "confirmed_bug": {
+    "function_rva": "0x83680",
+    "compare_rva": "0x836f3",
+    "flash_call_rva": "0x836fb",
+    "condition": "actorMagicka < totalMagikaCost + spellCost",
+    "positive_total_guard": false,
+    "player_only_flash_guard": false,
+    "hud_relocation_se": 51907
+  }
+}

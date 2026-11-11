@@ -132,6 +132,10 @@ bool Loki::AnimationCasting::CastTrigger::Invoke(const RE::Actor* a_caster)
         return false;
     }
 
+    if (isRunning.has_value() && isRunning.value() != actor->IsRunning()) {
+        return false;
+    }
+
     RE::ActorValueOwner* actorAV = actor->AsActorValueOwner();
     if (!actorAV) {
         return false;

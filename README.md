@@ -8,16 +8,32 @@ not the differing ArcEarth `main`. All six project `.cpp`/`.h` texts match the
 SHA-256 checksums embedded in the matching shipped PDB (LF line endings).
 `reconstruction.json` records the binary identity, source checksums and bug RVAs.
 
-The original `Expression.h` text was not recovered. It contributes no C13 code
-line records and is not referenced by the recovered project code beyond its
-include in `Framework.cpp`; no replacement header has been invented. This branch
-preserves that original include and is a source-recovery checkpoint, not a fixed
-or build-verified release.
+The original unused `Expression.h` text was not recovered; its include is removed
+on the fix branch. The reconstructed branch remains the exact source checkpoint.
 
 The shipped `CastOneSpell` compares current magicka with a cumulative cost even
 when the cost is zero, then flashes the global player HUD without a player-only
 guard. This behavior is confirmed in the installed binary at RVA `0x836F3` and
 `0x836FB`, not merely inferred from a different upstream version.
+## STB resource HUD fix (3.2.5)
+
+Free/refunding events no longer fail when an actor value is negative. NPC
+shortages still reject paid casts, but never flash the player's resource bars.
+Fixed trigger costs are checked only after the actor/weapon filters match,
+before consuming a cooldown. Spell effects, magnitudes and configured costs
+are unchanged. TOML syntax errors are reported without dereferencing a failed
+parse result.
+
+Clone with `--recurse-submodules`, set `VCPKG_ROOT`, then use:
+```
+cmake --preset default
+cmake --build --preset release
+ctest --preset release
+```
+The CommonLibSSE-NG submodule and vcpkg baseline are pinned. Builds do not
+automatically overwrite the game DLL. For explicit installation, configure
+`DAC_DEPLOY_DIR` to the mod directory and build the `deploy` target.
+
 
 ## Table of Contents
 * [Getting Started](#getting-started)

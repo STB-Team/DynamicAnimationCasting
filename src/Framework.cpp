@@ -2,7 +2,6 @@
 #include "framework.h"
 #define TOML_EXCEPTIONS 0
 #include <toml++/toml.h>
-#include "Expression.h"
 
 void Loki::DynamicAnimationCasting::ReadToml(std::filesystem::path path) {
     logger::info("Reading {}...", path.string());
@@ -103,14 +102,13 @@ void Loki::DynamicAnimationCasting::ReadToml(std::filesystem::path path) {
         }
     };
 
-    toml::parse_result file;
-    try {
-        file = toml::parse_file(path.c_str());
-    } catch (const toml::parse_error& e) {
+    auto file = toml::parse_file(path.c_str());
+    if (!file) {
+        const auto& e = file.error();
         logger::error("Error parsing file '{}':\t{}\n\t\t({}:{})", *e.source().path, e.description(),
                       e.source().begin.line, e.source().begin.column);
         return;
-    } 
+    }
     
     CastTriggers.reserve(1024);
     logger::info("Start : {}", path.string());

@@ -1,6 +1,24 @@
 # DynamicAnimationCasting-NG
 A SKSE plugin to cast spells at animation events. Best for Spell Sword & Battle Mages.
 
+## Reconstructed installed NG Plus 3.2.4
+
+The `reconstructed/ng-plus-3.2.4` branch restores the installed Nexus file 398206,
+not the differing ArcEarth `main`. All six project `.cpp`/`.h` texts match the
+SHA-256 checksums embedded in the matching shipped PDB (LF line endings).
+`reconstruction.json` records the binary identity, source checksums and bug RVAs.
+
+The original `Expression.h` text was not recovered. It contributes no C13 code
+line records and is not referenced by the recovered project code beyond its
+include in `Framework.cpp`; no replacement header has been invented. This branch
+preserves that original include and is a source-recovery checkpoint, not a fixed
+or build-verified release.
+
+The shipped `CastOneSpell` compares current magicka with a cumulative cost even
+when the cost is zero, then flashes the global player HUD without a player-only
+guard. This behavior is confirmed in the installed binary at RVA `0x836F3` and
+`0x836FB`, not merely inferred from a different upstream version.
+
 ## Table of Contents
 * [Getting Started](#getting-started)
   * [Environment Setup](#environment-setup)

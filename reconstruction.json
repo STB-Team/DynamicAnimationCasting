@@ -36,7 +36,8 @@
   ],
   "unrecoverable_unused_header": {
     "path": "src/Expression.h",
-    "sha256": "7ec50d1ef112ca48baafa62d991664a0722797673562c8e9ed766ac6a0d632cd"
+    "sha256": "7ec50d1ef112ca48baafa62d991664a0722797673562c8e9ed766ac6a0d632cd",
+    "emitted_source_line_records": 0
   },
   "upstream_base": "5fb60cbe",
   "reconstruction": "Exact source text recovered and verified against original PDB SHA256; normalize checkout CRLF to LF.",
